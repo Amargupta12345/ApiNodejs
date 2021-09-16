@@ -1,6 +1,6 @@
 const UserServices = require("./user.service");
 const mail = require("../Mailer");
-const common = require("./common");
+const common = require("../common");
 
 exports.register = function (req, res) {
   UserServices.addUser(req.body).then(
@@ -41,17 +41,31 @@ exports.register = function (req, res) {
 };
 
 exports.login = function (req, res) {
-  UserServices.findUser(req.body).then(
-    function (result) {
-      res.send("Login Successfully");
-    },
-    function (err) {
-      res.send(err);
-    }
-  );
+  UserServices.findUser(req.body)
+    .then(function (result) {
+      console.log(result);
+      let payload = {
+        role: result.role,
+        email: result.email,
+      };
+      console.log("payload", payload);
+      common.getToken(payload, function (error, token) {
+        console.log(error);
+        if (error) {
+          res.status(500).send({ message: "Internal Server Error" });
+        } else {
+          res.set("token", token);
+          res.send({
+            message: "Login Succesfull",
+          });
+        }
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      res.send(error);
+    });
 };
-
-exports.addusers = function (req, res) {};
 
 exports.verify = function (req, res) {
   common.verifyToken(req.query.token, function (error, data) {
@@ -68,4 +82,14 @@ exports.verify = function (req, res) {
       );
     }
   });
+};
+
+exports.allUsers = function (req, res) {
+  UserServices.findAllUsers()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Internal Server Error" });
+    });
 };

@@ -1,0 +1,31 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+  integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+  crossorigin="anonymous"
+/>
+<div class="container">
+    <div class="row">
+        <% for(var i=0; i < data.length; i++) {%>
+            <div class="col">
+                <div class="card mb-3" style="width: 18rem;">
+                    <!-- <img src="<%=data[i].image %>" class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= data[i].title %>
+                        </h5>
+
+                        <label>Color: <%= data[i].language %></label>
+                        <label>Rating: <%= data[i].rating %></label>
+                        <label>Material: <%= data[i].year %></label>
+                        
+                        <a href="http://localhost:5000/video/findvideoDetails/<%= data[i]._id %>" class="btn btn-primary">
+                            Get in Videos
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <%} %>
+    </div>
+</div>

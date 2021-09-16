@@ -1,7 +1,8 @@
 const express = require("express");
 const router = require("./routes");
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser"); ///middleware for parsing the body from client
 const Mongoose = require("mongoose");
+const path = require("path");
 
 const Port = process.env.PORT || 5000;
 
@@ -21,6 +22,9 @@ Mongoose.connect(dburl).then(
   }
 );
 
+server.set("view engine", "ejs");
 server.use(bodyParser.json());
 
 server.use(router);
+
+server.use(express.static("videos")); // static files video folder

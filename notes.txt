@@ -1,0 +1,30 @@
+extra work read the docs of expresss and mongodb 
+implement userverfied
+
+
+
+image url leke data base mai daln hai aab
+
+step 1 image ko cloudinary mai daal fir uske data mai daal uske database mai  add
+
+
+add to cart 
+
+userid 
+coverid
+quantity
+
+
+remove item one by one
+
+wo cart ko delete karege
+
+
+
+
+check sabse pehele userid
+or wo ky hone islogged in hone chaiye 
+
+jab wo product lete hai to uske coverid
+bhejna padhege or uske satth add item karne padhege 
+

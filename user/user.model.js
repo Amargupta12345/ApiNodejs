@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   verified: { type: Boolean, default: false },
   createdat: { type: Date, default: new Date() },
   phone: { type: Number },
+  role :{type : String , default :"user"}
 });
 
 

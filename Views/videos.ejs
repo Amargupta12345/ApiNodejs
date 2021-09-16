@@ -1,0 +1,14 @@
+<h1>Video Details</h1>
+<div style="width: 30%;">
+    <video width="320" height="240" controls>
+        <source src="http://localhost:5000/<%= data.file %>" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    <h3>Title: <%= data.title %></h3>
+    <!-- <label>Time: <%= data.duration %></label> -->
+    <label>Year: <%= data.year %></label>
+    <label>Rating: <%= data.rating %></label>
+    <p>Languages: <%= data.language %></p>
+    <p>Description: 
+        Lorem ipsum, in graphical and textual context, refers to filler text that is placed in a document or visual presentation. Lorem ipsum is derived from the Latin "dolorem ipsum" roughly translated as "pain itself."</p>
+</div>

@@ -34,9 +34,6 @@ exports.deleteUser = function (data) {
   });
 };
 
-
-
-
 exports.findUser = function (data) {
   return new Promise((resolve, reject) => {
     let query = {
@@ -46,7 +43,7 @@ exports.findUser = function (data) {
     UserModel.findOne(query)
       .then((result) => {
         if (result) {
-          resolve();
+          resolve(result);
         } else {
           reject("Invalid Credentails");
         }
@@ -56,8 +53,6 @@ exports.findUser = function (data) {
       });
   });
 };
-
-
 
 exports.verifyUser = function (data) {
   return new Promise((resolve, reject) => {
@@ -76,3 +71,22 @@ exports.verifyUser = function (data) {
       });
   });
 };
+
+exports.findAllUsers = function (req, res) {
+  return new Promise((resolve, reject) => {
+    // let query = {
+    //   verified: true,
+    //   role: "Admin", //admin
+    // };
+    UserModel.find({})
+
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+
