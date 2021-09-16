@@ -10,6 +10,11 @@ const dburl = "mongodb://localhost:27017/fyndb1";
 
 const server = express();
 
+process.on("uncaughtException", (err) => {
+  console.error("There was an uncaught error", err);
+  process.exit(1); //mandatory (as per the Node.js docs)
+});
+
 Mongoose.connect(dburl).then(
   function () {
     console.log("Connetcted to database");

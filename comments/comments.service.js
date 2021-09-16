@@ -16,6 +16,7 @@ exports.addComment = function (data) {
 
 exports.find = function (data) {
   return new Promise((resolve, reject) => {
+    
     let query = {
       courseId: data.courseId,
     };
