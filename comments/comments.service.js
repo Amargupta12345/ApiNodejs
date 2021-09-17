@@ -9,14 +9,13 @@ exports.addComment = function (data) {
         resolve(result);
       })
       .catch((error) => {
-        console.log(error);
+        reject(error);
       });
   });
 };
 
 exports.find = function (data) {
   return new Promise((resolve, reject) => {
-    
     let query = {
       courseId: data.courseId,
     };
@@ -25,6 +24,7 @@ exports.find = function (data) {
       comments: 1,
     };
     CommentsModel.find(query, projection)
+      .populate("courseId")
       .then((result) => {
         resolve(result);
       })

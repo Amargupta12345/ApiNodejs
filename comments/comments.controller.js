@@ -11,11 +11,15 @@ exports.addComments = function (req, res) {
 };
 
 exports.findComments = function (req, res) {
-  CommentsService.find(req.params)
-    .then((result) => {
-      res.send({ message: "comments fetch succefullt", result });
-    })
-    .catch((err) => {
-      res.send({ message: "not shown", err });
-    });
+  try {
+    CommentsService.find(req.params)
+      .then((result) => {
+        res.send({ message: "comments fetch succefullt", result });
+      })
+      .catch((err) => {
+        res.send({ message: "not shown", err });
+      });
+  } catch (error) {
+    res.send({ message: "server error", error });
+  }
 };

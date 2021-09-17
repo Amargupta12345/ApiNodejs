@@ -43,6 +43,10 @@ exports.CourseDetails = function (data) {
   });
 };
 
+
+
+
+
 /*
 
 {
